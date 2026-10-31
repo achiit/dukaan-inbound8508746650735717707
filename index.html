@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#11100f">
+<meta name="description" content="HSC Photo Studio — luxury wedding photography, pre-wedding shoots and cinematic films. Preserving your story, one frame at a time.">
+<title>HSC Photo Studio | Weddings • Films • Memories</title>
+<style>
+:root {
+  --site-primary: #b9955b;
+  --site-secondary: #211d19;
+  --site-background: #11100f;
+  --site-on-primary: #17130d;
+  --site-on-secondary: #f4eee4;
+  --site-on-background: #f6f1e9;
+  --site-font-body: "Arial", "Helvetica Neue", sans-serif;
+  --site-font-heading: "Georgia", "Times New Roman", serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  color-scheme: light dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: light-dark(#f8f5ef, #11100f); color: light-dark(#211d19, #f6f1e9); font-family: var(--site-font-body); }
+#app { min-height: 100vh; width: 100%; background-color: var(--site-background); color: var(--site-on-background); border-radius: 0; overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button, input, textarea, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.container { width: min(1160px, calc(100% - 44px)); margin: 0 auto; }
+.eyebrow { color: var(--site-primary); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; font-weight: 700; }
+.section { padding: calc(88px * var(--site-spacing-scale)) 0; }
+.section-head { max-width: 650px; margin: 0 auto 42px; text-align: center; }
+.section-head h2 { font: 400 calc(42px * var(--site-heading-scale))/1.1 var(--site-font-heading); margin: 12px 0; }
+.section-head p { color: #b9b0a4; line-height: 1.8; font-size: 14px; }
+.gold { color: var(--site-primary); }
+.topbar { position: absolute; z-index: 10; top: 0; left: 0; width: 100%; border-bottom: 1px solid #ffffff20; }
+.nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-mark { width: 42px; height: 42px; border: 1px solid var(--site-primary); display: grid; place-items: center; color: var(--site-primary); font: 18px var(--site-font-heading); letter-spacing: -.08em; }
+.brand-name { font: 19px var(--site-font-heading); letter-spacing: .05em; }
+.brand-sub { display: block; margin-top: 4px; font-size: 8px; letter-spacing: .24em; color: #c7b9a5; }
+.nav-links { display: flex; align-items: center; gap: 27px; font-size: 10px; text-transform: uppercase; letter-spacing: .14em; color: #e7dfd4; }
+.nav-links a:hover { color: var(--site-primary); }
+.nav-cta, .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 21px; background: var(--site-primary); color: var(--site-on-primary); border: 1px solid var(--site-primary); text-transform: uppercase; font-size: 10px; font-weight: 700; letter-spacing: .15em; transition: .25s; cursor: pointer; }
+.nav-cta:hover, .btn:hover { background: transparent; color: var(--site-primary); }
+.menu-toggle { display: none; border: 1px solid #ffffff55; color: white; background: transparent; padding: 9px 12px; }
+.hero { min-height: 760px; height: min(100vh, 900px); display: flex; align-items: center; position: relative; background: #171310; }
+.hero::before { content:""; position:absolute; inset:0; background: linear-gradient(90deg, rgba(10,9,8,.88) 0%, rgba(10,9,8,.52) 52%, rgba(10,9,8,.12) 100%), linear-gradient(0deg, #11100f 0%, transparent 28%), url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2200&q=85") center 42%/cover; opacity: 1; }
+.hero-content { position: relative; z-index: 1; padding-top: 100px; max-width: 760px; }
+.hero .eyebrow { margin-bottom: 22px; }
+.hero h1 { font: 400 clamp(56px, 8vw, 104px)/.98 var(--site-font-heading); letter-spacing: -.045em; margin: 0 0 25px; }
+.hero h1 em { color: var(--site-primary); font-weight: 400; }
+.hero p { color: #e1d8cc; font: 17px/1.8 var(--site-font-heading); max-width: 450px; margin-bottom: 32px; }
+.hero-actions { display: flex; gap: 13px; flex-wrap: wrap; }
+.btn-outline { background: transparent; color: #f6f1e9; border-color: #ffffff88; }
+.btn-outline:hover { border-color: var(--site-primary); color: var(--site-primary); }
+.hero-note { position: absolute; z-index: 1; right: 4%; bottom: 70px; writing-mode: vertical-rl; color: #d2c4b2; letter-spacing: .24em; text-transform: uppercase; font-size: 9px; }
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.intro-image { position: relative; min-height: 520px; }
+.intro-image img { width: 82%; height: 480px; object-fit: cover; display: block; }
+.intro-image::after { content:""; position:absolute; width: 72%; height: 80%; right: 0; bottom: 0; border: 1px solid var(--site-primary); z-index: 0; opacity: .7; }
+.intro-image img { position: relative; z-index: 1; }
+.intro-copy h2 { font: 400 calc(48px * var(--site-heading-scale))/1.08 var(--site-font-heading); margin: 15px 0 20px; }
+.intro-copy p { color: #b9b0a4; line-height: 1.9; font-size: 14px; }
+.text-link { display: inline-block; color: var(--site-primary); text-transform: uppercase; letter-spacing: .15em; font-size: 10px; font-weight: bold; margin-top: 18px; border-bottom: 1px solid #b9955b66; padding-bottom: 8px; }
+.gallery-grid { display: grid; grid-template-columns: 1.15fr .85fr 1fr; grid-auto-rows: 260px; gap: 12px; }
+.gallery-card { overflow: hidden; position: relative; background: #27211b; cursor: pointer; }
+.gallery-card.tall { grid-row: span 2; }
+.gallery-card.wide { grid-column: span 2; }
+.gallery-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .65s; }
+.gallery-card:hover img { transform: scale(1.06); }
+.gallery-card::after { content:""; position:absolute; inset:45% 0 0; background:linear-gradient(transparent, #090807b8); pointer-events:none; }
+.gallery-label { position:absolute; z-index:1; bottom:18px; left:20px; color:white; font: 20px var(--site-font-heading); }
+.gallery-hint { text-align:center; color:#9e9589; font-size:11px; margin-top:18px; }
+.services-grid { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid #ffffff20; border-left: 1px solid #ffffff20; }
+.service { min-height: 235px; padding: 30px; border-right: 1px solid #ffffff20; border-bottom: 1px solid #ffffff20; transition: background .25s; }
+.service:hover { background: #211d19; }
+.service-num { color: var(--site-primary); font: 14px var(--site-font-heading); }
+.service h3 { font: 25px var(--site-font-heading); font-weight: 400; margin: 24px 0 10px; }
+.service p { color: #aaa196; font-size: 13px; line-height: 1.8; margin: 0; }
+.film-band { min-height: 410px; position: relative; display: flex; align-items: center; background: #201a15; overflow: hidden; }
+.film-band::before { content:""; position:absolute; inset:0; background:linear-gradient(90deg,#100e0de8,#100e0d55),url("https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=1800&q=85") center/cover; }
+.film-content { position:relative; z-index:1; max-width:620px; padding:70px 0; }
+.film-content h2 { font: 400 48px/1.1 var(--site-font-heading); margin:12px 0; }
+.film-content p { color:#d0c5b8; line-height:1.8; font-size:14px; }
+.play-button { display:inline-grid; place-items:center; width:58px; height:58px; border:1px solid var(--site-primary); border-radius:50%; color:var(--site-primary); margin-top:18px; font-size:20px; }
+.packages { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.package { border:1px solid #ffffff26; padding:34px 30px; background:#171513; }
+.package.featured { border-color:var(--site-primary); background:#211d19; transform:translateY(-10px); }
+.package .tier { color:var(--site-primary); font-size:9px; letter-spacing:.2em; text-transform:uppercase; }
+.package h3 { font:32px var(--site-font-heading); font-weight:400; margin:14px 0 5px; }
+.package .price { font:italic 17px var(--site-font-heading); color:#d8c8b0; padding-bottom:22px; border-bottom:1px solid #ffffff22; }
+.package ul { list-style:none; padding:0; margin:24px 0 30px; color:#b9b0a4; font-size:13px; line-height:2.5; }
+.package li::before { content:"✦"; color:var(--site-primary); margin-right:10px; font-size:10px; }
+.testimonials { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.quote { padding:30px; border:1px solid #ffffff22; }
+.stars { color:var(--site-primary); letter-spacing:.2em; }
+.quote blockquote { font:italic 21px/1.55 var(--site-font-heading); color:#e7dfd4; margin:20px 0; }
+.quote cite { color:#a69b8e; font-size:10px; letter-spacing:.16em; text-transform:uppercase; font-style:normal; }
+.contact-section { background:#211d19; }
+.contact-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:70px; align-items:start; }
+.contact-copy h2 { font:400 48px/1.08 var(--site-font-heading); margin:13px 0 18px; }
+.contact-copy p { color:#b9b0a4; font-size:14px; line-height:1.9; }
+.contact-details { margin-top:30px; display:grid; gap:15px; color:#e9e0d4; font-size:13px; }
+.contact-details span { color:var(--site-primary); display:inline-block; width:25px; }
+.contact-form { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.field { display:grid; gap:8px; }
+.field.full { grid-column:1/-1; }
+.field label { font-size:9px; letter-spacing:.17em; text-transform:uppercase; color:#c9bba8; }
+.field input,.field textarea,.field select { width:100%; border:1px solid #ffffff30; background:#151311; color:#f6f1e9; padding:14px; outline:none; border-radius:0; }
+.field input:focus,.field textarea:focus,.field select:focus { border-color:var(--site-primary); }
+.field textarea { min-height:115px; resize:vertical; }
+.form-note { grid-column:1/-1; color:#a99e91; font-size:11px; line-height:1.6; }
+.form-status { grid-column:1/-1; color:var(--site-primary); font-size:12px; min-height:18px; }
+.footer { padding:30px 0; background:#11100f; border-top:1px solid #ffffff20; }
+.footer-inner { display:flex; justify-content:space-between; align-items:center; gap:20px; color:#a69b8e; font-size:10px; letter-spacing:.1em; text-transform:uppercase; }
+.footer-links { display:flex; gap:18px; }
+.whatsapp-float { position:fixed; z-index:20; right:22px; bottom:22px; width:54px; height:54px; border-radius:50%; background:#25d366; color:#082b16; display:grid; place-items:center; font-size:24px; box-shadow:0 8px 30px #0008; }
+.lightbox { display:none; position:fixed; inset:0; z-index:50; background:#050505ed; align-items:center; justify-content:center; padding:30px; }
+.lightbox.open { display:flex; }
+.lightbox img { max-width:min(100%,1100px); max-height:85vh; object-fit:contain; }
+.lightbox button { position:absolute; top:20px; right:25px; border:1px solid #ffffff66; background:transparent; color:white; padding:10px 15px; font-size:20px; cursor:pointer; }
+@media (max-width:850px) {
+ .nav-links { display:none; position:absolute; top:82px; left:0; width:100%; background:#151311; padding:22px; flex-direction:column; align-items:flex-start; border-bottom:1px solid #ffffff22; }
+ .nav-links.open { display:flex; }
+ .menu-toggle { display:block; }
+ .nav-cta { display:none; }
+ .intro-grid,.contact-grid { grid-template-columns:1fr; gap:38px; }
+ .intro-image { min-height:400px; }
+ .intro-image img { height:380px; }
+ .services-grid { grid-template-columns:repeat(2,1fr); }
+ .gallery-grid { grid-auto-rows:210px; }
+}
+@media (max-width:600px) {
+ .container { width:min(100% - 32px,1160px); }
+ .hero { min-height:690px; height:90vh; }
+ .hero h1 { font-size:58px; }
+ .hero p { font-size:15px; }
+ .hero-note { display:none; }
+ .section { padding:65px 0; }
+ .section-head h2,.intro-copy h2,.contact-copy h2 { font-size:36px; }
+ .gallery-grid { grid-template-columns:1fr 1fr; grid-auto-rows:170px; }
+ .gallery-card.tall { grid-row:span 2; }
+ .gallery-card.wide { grid-column:span 2; }
+ .services-grid { grid-template-columns:1fr; }
+ .service { min-height:185px; }
+ .packages,.testimonials { grid-template-columns:1fr; }
+ .package.featured { transform:none; }
+ .contact-form { grid-template-columns:1fr; }
+ .field.full,.form-note,.form-status { grid-column:1; }
+ .footer-inner { flex-direction:column; text-align:center; }
+ .footer-links { flex-wrap:wrap; justify-content:center; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+</style>
+</head>
+<body>
+<div id="app">
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="#home" aria-label="HSC Photo Studio home">
+      <span class="brand-mark">HSC</span>
+      <span><span class="brand-name">HSC Photo Studio</span><span class="brand-sub">PHOTOGRAPHY & CINEMATIC FILMS</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#gallery">Gallery</a><a href="#services">Services</a><a href="#packages">Packages</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Let's Talk <span>↗</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-content">
+    <div class="eyebrow">Luxury Wedding Photography & Cinematic Films</div>
+    <h1>HSC <em>Photo</em><br>Studio</h1>
+    <p>Preserving Your Story,<br>One Frame at a Time.</p>
+    <div class="hero-actions">
+      <a class="btn" href="#gallery">Explore Our Work <span>↓</span></a>
+      <a class="btn btn-outline" href="#contact">Enquire Now <span>↗</span></a>
+    </div>
+  </div>
+  <div class="hero-note">Your story • Our lens • Memories forever</div>
+</section>
+
+<section class="section" id="about">
+  <div class="container intro-grid">
+    <div class="intro-image">
+      <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=85" alt="Wedding couple celebrating together" loading="lazy">
+    </div>
+    <div class="intro-copy">
+      <div class="eyebrow">Welcome to HSC Studio</div>
+      <h2>Your Story.<br><span class="gold">Our Lens.</span><br>Memories Forever.</h2>
+      <p>We believe every celebration has a story worth remembering. From the quiet emotions to the grand celebrations, HSC Studio captures every detail with creativity and care.</p>
+      <p>We create photographs and films that bring your memories back to life.</p>
+      <a class="text-link" href="#contact">Get in Touch ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gallery" style="background:#171513">
+  <div class="container">
+    <div class="section-head"><div class="eyebrow">A few stories we've told</div><h2>Frames of <span class="gold">Forever</span></h2><p>Real wedding moments, beautifully captured. Tap any frame to view it larger. Replace these sample photographs with your own HSC portfolio images before publishing.</p></div>
+    <div class="gallery-grid">
+      <div class="gallery-card tall"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85" alt="Wedding ceremony" loading="lazy"><span class="gallery-label">The Wedding</span></div>
+      <div class="gallery-card"><img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=800&q=85" alt="Wedding couple portrait" loading="lazy"><span class="gallery-label">Together</span></div>
+      <div class="gallery-card"><img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=800&q=85" alt="Wedding details" loading="lazy"><span class="gallery-label">Details</span></div>
+      <div class="gallery-card wide"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1400&q=85" alt="Wedding celebration" loading="lazy"><span class="gallery-label">Celebrations</span></div>
+      <div class="gallery-card"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=800&q=85" alt="Wedding bouquet" loading="lazy"><span class="gallery-label">Little Moments</span></div>
+    </div>
+    <div class="gallery-hint">A selection of sample images — upload your original work for the final website.</div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head"><div class="eyebrow">What we offer</div><h2>Photography & <span class="gold">Creative Services</span></h2><p>From the first frame to the final album, we make every detail special.</p></div>
+    <div class="services-grid">
+      <article class="service"><div class="service-num">01</div><h3>Wedding Photography</h3><p>Real emotions, beautiful rituals and unforgettable celebrations.</p></article>
+      <article class="service"><div class="service-num">02</div><h3>Pre-Wedding Shoot</h3><p>Creative concepts, beautiful locations and cinematic couple portraits.</p></article>
+      <article class="service"><div class="service-num">03</div><h3>Cinematic Videography</h3><p>Story-driven wedding films that let you relive your day.</p></article>
+      <article class="service"><div class="service-num">04</div><h3>Album Designing</h3><p>Premium layouts and elegant albums made for your memories.</p></article>
+      <article class="service"><div class="service-num">05</div><h3>Event Coverage</h3><p>Birthdays, family functions and special celebrations.</p></article>
+      <article class="service"><div class="service-num">06</div><h3>Portraits & Candid</h3><p>Natural expressions and timeless individual portraits.</p></article>
+      <article class="service"><div class="service-num">07</div><h3>Reels & Short Videos</h3><p>Short-form visual stories made to share your special moments.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="film-band">
+  <div class="container film-content">
+    <div class="eyebrow">Watch our stories</div>
+    <h2>Love in Motion —<br><span class="gold">Feel Every Moment</span></h2>
+    <p>Cinematic wedding films and meaningful memories, beautifully told. Ask us for our latest film portfolio.</p>
+    <a class="play-button" href="#contact" aria-label="Enquire about wedding films">▶</a>
+  </div>
+</section>
+
+<section class="section" id="packages">
+  <div class="container">
+    <div class="section-head"><div class="eyebrow">Your celebration, your way</div><h2>Investment <span class="gold">Packages</span></h2><p>Every event is unique. Contact us for a custom quotation based on your date and requirements.</p></div>
+    <div class="packages">
+      <article class="package"><div class="tier">01 · The essentials</div><h3>Essential</h3><div class="price">Custom quotation</div><ul><li>Photography coverage</li><li>Edited selected images</li><li>Personal consultation</li></ul><a class="btn btn-outline" href="#contact" data-package="Essential">Enquire Now ↗</a></article>
+      <article class="package featured"><div class="tier">02 · Most loved</div><h3>Premium</h3><div class="price">Custom quotation</div><ul><li>Photo & video options</li><li>Creative storytelling</li><li>Album design options</li></ul><a class="btn" href="#contact" data-package="Premium">Enquire Now ↗</a></article>
+      <article class="package"><div class="tier">03 · The signature</div><h3>Luxury</h3><div class="price">Custom quotation</div><ul><li>Tailored event coverage</li><li>Cinematic film options</li><li>Premium album options</li></ul><a class="btn btn-outline" href="#contact" data-package="Luxury">Enquire Now ↗</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#171513">
+  <div class="container">
+    <div class="section-head"><div class="eyebrow">Kind words</div><h2>What Couples <span class="gold">Say</span></h2><p>Your trust and happiness mean everything to us.</p></div>
+    <div class="testimonials">
+      <article class="quote"><div class="stars">★★★★★</div><blockquote>“Beautiful moments, thoughtfully captured. We loved looking back at our special day.”</blockquote><cite>— HSC Studio Client</cite></article>
+      <article class="quote"><div class="stars">★★★★★</div><blockquote>“A wonderful experience from planning to final memories. Thank you for the lovely work.”</blockquote><cite>— HSC Studio Client</cite></article>
+    </div>
+  </div>
+</section>
+
+<section class="section contact-section" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-copy">
+      <div class="eyebrow">Let's make memories</div>
+      <h2>Tell Us About<br><span class="gold">Your Event</span></h2>
+      <p>Share your date, location and ideas. We will help you plan the right photography experience.</p>
+      <div class="contact-details">
+        <div><span>☎</span><a href="tel:+917415798521">+91 74157 98521</a></div>
+        <div><span>✉</span><a href="mailto:himanshuphotography@gmail.com">himanshuphotography@gmail.com</a></div>
+        <div><span>◎</span><a href="https://www.instagram.com/hsc_photography_seoni/" target="_blank" rel="noopener">@hsc_photography_seoni</a></div>
+      </div>
+    </div>
+    <form class="contact-form" id="enquiryForm">
+      <div class="field"><label for="name">Your name</label><input id="name" name="name" required placeholder="Full name"></div>
+      <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" required inputmode="tel" placeholder="+91"></div>
+      <div class="field"><label for="event">Shoot type</label><select id="event" name="event" required><option value="">Select a service</option><option>Wedding Shoot</option><option>Pre-Wedding Shoot</option><option>Birthday Shoot</option><option>Videography</option><option>Photo Shoot</option><option>Reels & Short Videos</option><option>Album Design</option><option>Other Event</option></select></div>
+      <div class="field"><label for="date">Event date</label><input id="date" name="date" type="date"></div>
+      <div class="field full"><label for="location">Event location</label><input id="location" name="location" placeholder="City / venue"></div>
+      <div class="field full"><label for="message">Tell us more</label><textarea id="message" name="message" placeholder="Share your plans, ideas or questions..."></textarea></div>
+      <div class="form-note">Submitting opens WhatsApp with your enquiry details. No information is stored on this demo website.</div>
+      <div class="form-status" id="formStatus" aria-live="polite"></div>
+      <button class="btn field full" type="submit">Send Enquiry on WhatsApp ↗</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>© <span id="year"></span> HSC Photo Studio · Photography & Videography</div>
+    <div class="footer-links"><a href="#home">Back to top ↑</a><a href="https://wa.me/917415798521" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/hsc_photography_seoni/" target="_blank" rel="noopener">Instagram</a></div>
+  </div>
+</footer>
+<a class="whatsapp-float" href="https://wa.me/917415798521?text=Hello%20HSC%20Studio%2C%20I%20want%20to%20enquire%20about%20a%20booking." target="_blank" rel="noopener" aria-label="Chat with HSC Photo Studio on WhatsApp">✆</a>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Expanded gallery image"><button id="closeLightbox" aria-label="Close image">×</button><img id="lightboxImage" alt=""></div>
+</div>
+<script>
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+menuToggle.addEventListener('click', () => {
+  const opened = navLinks.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', String(opened));
+  menuToggle.textContent = opened ? '×' : '☰';
+});
+navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.textContent = '☰';
+}));
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightboxImage');
+document.querySelectorAll('.gallery-card img').forEach(img => {
+  img.parentElement.addEventListener('click', () => {
+    lightboxImage.src = img.src;
+    lightboxImage.alt = img.alt;
+    lightbox.classList.add('open');
+  });
+});
+function closeLightbox() { lightbox.classList.remove('open'); lightboxImage.src = ''; }
+document.getElementById('closeLightbox').addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', event => { if (event.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', event => { if (event.key === 'Escape') closeLightbox(); });
+
+document.querySelectorAll('[data-package]').forEach(link => link.addEventListener('click', () => {
+  document.getElementById('message').value = 'I am interested in the ' + link.dataset.package + ' package.';
+}));
+document.getElementById('enquiryForm').addEventListener('submit', event => {
+  event.preventDefault();
+  const data = new FormData(event.currentTarget);
+  const lines = [
+    'Hello HSC Photo Studio, I would like to enquire about a booking.',
+    '',
+    'Name: ' + data.get('name'),
+    'Phone: ' + data.get('phone'),
+    'Shoot type: ' + data.get('event'),
+    'Event date: ' + (data.get('date') || 'Not decided'),
+    'Location: ' + (data.get('location') || 'Not specified'),
+    'Message: ' + (data.get('message') || 'Not specified')
+  ];
+  document.getElementById('formStatus').textContent = 'Opening WhatsApp with your enquiry…';
+  window.open('https://wa.me/917415798521?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
+});
+</script>
+</body>
+</html>
